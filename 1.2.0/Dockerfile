@@ -18,5 +18,5 @@ RUN         apk --no-cache add --virtual .build-deps \
                 mongodb@2.1.4 && \
             apk del .build-deps
 VOLUME      ["/db"]
-EXPOSE      80/tcp 1883/tcp
-CMD         mosca -v -d /db --http-port 80 --http-bundle | bunyan
+EXPOSE      80/tcp 443/tcp 1883/tcp 8883/tcp
+CMD         mosca -v -d /db -p 1883 --http-port 80 | bunyan
